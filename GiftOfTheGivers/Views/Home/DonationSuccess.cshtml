@@ -1,0 +1,29 @@
+﻿
+
+@model GiftOfTheGivers.Models.Donation
+
+@{
+    ViewData["Title"] = "Thank You";
+}
+
+<h1>Thank you for your Donation!</h1>
+
+<div class="border rounded p-4" style="max-width: 500px;">
+    <h3>Donation Reciepts</h3>
+    <p><strong>Donor:</strong>@Model.DonorName</p>
+    <p><strong>Amount:</strong>@Model.Amount @Model.Currency</p>
+    <p><strong>Type:</strong>@(Model.IsRecurring ? "Recurring" :"One-time")</p>
+    <p><strong>Date:</strong>@Model.DonationDate.ToShortDateString()</p>
+
+    @if (ViewBag.Certificate != null)
+    {
+        <hr />
+        <h5>Tax Certificate</h5>
+        <pre style="white-space: pre-wrap;">@ViewBag.Certificate</pre>
+    }
+    else
+    {
+        <hr />
+        <p><em>This is a placeholder tax certificate for prototype purpose. A downloadable PDF version will be implemented in the full system.</em></p>
+    }
+</div>

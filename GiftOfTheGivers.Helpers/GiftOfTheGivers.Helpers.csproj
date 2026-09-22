@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>GiftOfTheGivers.Helpers</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Group 13</Authors>
+	<Description>Helper methods for the Gift of the Givers web app</Description>
+  </PropertyGroup>
+
+</Project>

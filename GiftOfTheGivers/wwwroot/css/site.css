@@ -1,0 +1,72 @@
+
+:root{
+    --gog-green:#1b7a3e;
+    --gog-green-dark: #145c2f;
+    --gog-orange: #e8731c;
+}
+.hero-section{
+    background-image:url('/images/hero-donation.png');
+    background-size:cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hero-overlay{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 80px 20px;
+}
+.navbar{
+    background-color: white !important;
+    border-bottom: 4px solid var(--gog-green) !important;
+}
+
+.nav-link {
+    color: var(--gog-green-dark) !important;
+    font-weight: 500;
+}
+.nav-link:hover {
+    color: var(--gog-green) !important;
+}
+
+h1,h2,h3{
+    color: var(--gog-green-dark);
+}
+
+.btn-primary{
+    background-color: var(--gog-green) !important ;
+    border-color: var(--gog-green) !important;
+}
+
+.btn-primary :hover {
+    background-color: var(--gog-green-dark) !important;
+    border-color: var(--gog-green-dark) !important;
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+a{
+    color:var(--gog-green-dark);
+}
+a:hover{
+    color:var(--gog-green);
+}

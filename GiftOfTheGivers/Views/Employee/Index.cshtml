@@ -1,0 +1,66 @@
+﻿
+
+@model GiftOfTheGivers.Models.EmployeeDashboardViewModel
+
+@{
+    ViewData["Title"] = "Employee Dashboard";
+
+}
+<h1> Employee Dashboard</h1>
+
+<h3> Post a Project Update</h3>
+
+   <form asp-controller="Employee" asp-action="PostUpdate" method="post">
+
+       <div class="mb-3">
+           <label class="form-label"> Title</label>
+           <input type="text" name="Title" class="form-control" required />
+
+       </div>
+       <div class="mb-3">
+           <label class="form-label"> Content</label>
+           <textarea name="Content" class="form-control" rows"3" required></textarea>
+       </div>
+       <button type="submit" class="btn btn-primary">Post Update</button>
+
+   </form>
+
+   <hr />
+
+   <h3> Recent Project Updates</h3>
+   @foreach (var update in Model.ProjectUpdates)
+{
+    <div class="border rounded p-3 mb-2">
+        <strong>@update.Title</strong>
+        <p>@update.Content</p>
+        <small> Posted by @update.PostedBy on @update.PostedDate.ToShortDateString()</small>
+    </div>
+}
+
+    <hr />
+
+ <h3> Volunteer Sign-Ups</h3>
+ <table class="table">
+     <thead>
+         <tr>
+             <th> Name</th>
+            <th> Skills</th>
+            <th> Availabity</th>
+            <th> Submitted</th>
+
+         </tr>
+     </thead>
+     <tbody>
+         @foreach (var volunteer in Model.Volunteers)
+        {
+            <tr>
+                <td>@volunteer.FullName</td>
+                <td>@volunteer.Skills</td>
+                <td>@volunteer.Availability</td>
+                <td>@volunteer.SubmittedDate.ToShortDateString()</td>
+            </tr>
+        }
+
+    </tbody>
+
+ </table>

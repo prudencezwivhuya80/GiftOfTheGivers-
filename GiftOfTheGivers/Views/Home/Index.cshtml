@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="hero-section text-center text-white mb-4">
+
+    <div class="hero-overlay">
+        <h1 class="display-3 fw-bold" style="text-shadow:2px 2px 8px rgba(0,0,0,0.7);"> Gift Of The Givers</h1>
+        <p class="lead"> Bringing hope and restoring dignity to those affected by disaster.</p>
+        <a asp-controller="Home" asp-action="Donate" class="btn btn-light btn-lg mt-3"> Donate Now</a>
+     </div>
+</div>
+<div class="row text-center mb-5">
+    <div class="col-md-4">
+        <h3> Our Mission</h3>
+        <p> We respond to disasters and humanitarian crises, providing relief where it's needed most.</p>
+
+    </div>
+    <div class="col-md-4">
+        <h3> Get Involved</h3>
+        <p>Volunteer your time and skills to support our relief efforts on the ground.</p>
+        <a asp-controller="Home" asp-action="Volunteer" class="btn btn-outline-success">Volunteer</a>
+    </div>
+    <div class="col-md-4">
+        <h3> Make a Difference </h3>
+        <p> Every donation ,big or small helps us reach communities in urgent need .</p>
+        <a asp-controller="Home" asp-action="Donate" class="btn btn-outline-success">Donate</a>
+
+</div>
+</div>

@@ -1,0 +1,52 @@
+﻿
+<style>
+    .donate-page h1{
+        color:var(--gog-orange);
+    
+    }
+    .donate-page .btn-primary{
+        background-color: var(--gog-orange) !important;
+        border-color: var(--gog-orange)!important;
+}
+    .donate-page .btn-primary:hover{
+        background-color: #c2600f !important;
+        border-color: #c2600f !important;
+    }
+        </style>
+@{
+    ViewData["Title"] = "Donate";
+    }
+    <div class="donate-page">
+        <h1> Make a Donation</h1>
+
+      <form asp-controller="Home" asp-action="Donate" method="post">
+       <div class="mb-3">
+        <label class="form-label">Your Name (optional)</label>
+        <input type="text" name="DonorName" class="form-control" placeholder="Leave blank to donate anonymously"/>
+    </div>
+    
+
+    <div class="mb-3">
+        <label class="form-label">Amount</label>
+        <input type="number" name="Amount" step="0.01" class="form-control" required/>
+
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Currency</label>
+        <select name="Currency" class="form-select">
+            <option value="ZAR">ZAR</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
+</div>
+
+<div class="mb-3 form-check">
+      <input type="checkbox" name="IsRecurring" class="form-check-input" value="true" />
+      <label class="form-check-label">Make this a recurring donation</label>
+</div>
+
+<button type="submit" class="btn btn-primary">Donate</button>
+    </form>
+    </div>
+

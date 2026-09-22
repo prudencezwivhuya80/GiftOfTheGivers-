@@ -1,0 +1,20 @@
+﻿
+@model GiftOfTheGivers.Models.Volunteer
+@{
+    ViewData["Title"] = "Thank you "  ;
+}
+
+<h1> Thank you for volunteering!</h1>
+
+   <div class="border rounded p-4" style="max-width:500px">
+
+       <h3> Your Submissions</h3>
+       <p><strong>Name:</strong> @Model.FullName</p>
+       <p><strong>Skills:</strong> @Model.Skills</p>
+       <p><strong>Availability:</strong> @Model.Availability</p>
+       <p><strong>Submitted:</strong> @Model.SubmittedDate.ToShortDateString()</p>
+
+       <hr/>
+         <p><em>An Employee will review your submission.This is a prototype ,no workflow or approval process is implemented yet</em></p>
+   </div>
+

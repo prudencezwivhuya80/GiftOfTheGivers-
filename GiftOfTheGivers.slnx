@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="GiftOfTheGivers.Functions/GiftOfTheGivers.Functions.csproj" Id="cda5ccc1-5c74-4f37-8483-eee1fd9b0a3a" />
+  <Project Path="GiftOfTheGivers.Helpers/GiftOfTheGivers.Helpers.csproj" Id="6238353e-f9fd-4e57-b5a8-2f23f447a6dc" />
+  <Project Path="GiftOfTheGivers.Tests/GiftOfTheGivers.Tests.csproj" Id="99f3718b-ab4c-4eb2-be18-f4056cc46f2a" />
+  <Project Path="GiftOfTheGivers/GiftOfTheGivers.csproj" />
+</Solution>

@@ -33,5 +33,47 @@
 </div>
       <button type="submit" class="btn btn-primary"> Send Message</button>
             </form>
+<div class="mt-4">
+    <h4>Frequently Asked Questions</h4>
+ 
+    <div class="mb-2">
+        <button type="button" class="btn btn-light border w-100 text-start" onclick="toggleFaq('faq1')">
+            How do I get a tax certificate for my donation?
+        </button>
+        <div id="faq1" style="display:none;" class="p-2 border-start">
+            A certificate is generated automatically after you complete the donation form.
+        </div>
+    </div>
+ 
+    <div class="mb-2">
+        <button type="button" class="btn btn-light border w-100 text-start" onclick="toggleFaq('faq2')">
+            Can I volunteer without donating?
+        </button>
+        <div id="faq2" style="display:none;" class="p-2 border-start">
+            Yes, donating and volunteering are separate and you can do either one.
+        </div>
+    </div>
+ 
+    <div class="mb-2">
+        <button type="button" class="btn btn-light border w-100 text-start" onclick="toggleFaq('faq3')">
+            How long does it take to hear back?
+        </button>
+        <div id="faq3" style="display:none;" class="p-2 border-start">
+            We aim to respond to all queries within 48 hours.
+        </div>
+    </div>
+</div>
+ 
+<script>
+    function toggleFaq(id) {
+        var section = document.getElementById(id);
+        if (section.style.display === "none") {
+            section.style.display = "block";
+        } else {
+            section.style.display = "none";
+        }
+    }
+</script>
+
     </div>
 </div>

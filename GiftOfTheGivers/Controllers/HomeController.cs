@@ -15,7 +15,7 @@ namespace GiftOfTheGivers.Controllers
 
         private readonly CertificateService _certificateService;
 
-        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context,CertificateService certificateService )
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, CertificateService certificateService)
         {
             _logger = logger;
             _context = context;
@@ -44,6 +44,11 @@ namespace GiftOfTheGivers.Controllers
         [HttpPost]
         public async Task<IActionResult> Donate(Donation donation)
         {
+            if (string.IsNullOrWhiteSpace(donation.DonorName))
+            {
+                donation.DonorName = "Anonymous";
+            }
+
             _context.Donations.Add(donation);
             _context.SaveChanges();
 

@@ -8,20 +8,40 @@
 <form asp-controller="Home" asp-action="Volunteer" method="post">
     <div class="mb-3">
         <label class="form-label">Full Name</label>
-        <input type="text" name="FullName" class="form-control" required/>
+        <input type="text" name="FullName" class="form-control" required />
 
     </div>
 
     <div class="mb-3">
         <label class="form-label">Skills</label>
         <textarea name="Skills" class="form-control" rows="3" placeholder="e.g. First aid ,driving ,logistics" required> </textarea>
-</div>
+    </div>
 
     <div class="mb-3">
         <label class="form-label">Availability</label>
-        <input type="text" name="Availability" class="form-control" placeholder="e.g. Weekends,evenings" required/>
+        <input type="text" name="Availability" class="form-control" placeholder="e.g. Weekends,evenings" required />
 
     </div>
-     <button type="submit" class="btn btn-primary">Submit Interest</button>
+
+    <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="agreeTerms" onclick="toggleSubmit()" />
+        <label class="form-check-label" for="agreeTerms">
+            I agree that the information I provided is correct
+        </label>
+    </div>
+
+    <script>
+        function toggleSubmit() {
+            var checkbox = document.getElementById("agreeTerms");
+            var button = document.getElementById("volunteerSubmit");
+            button.disabled = !checkbox.checked;
+        }
+
+        window.onload = function () {
+            document.getElementById("volunteerSubmit").disabled = true;
+        };
+    </script>
+
+    <button type="submit" class="btn btn-primary" id="volunteerSubmit">Submit Interest</button>
 
 </form>

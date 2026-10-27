@@ -22,6 +22,11 @@ steps:
     packageType: 'runtime'
     version: '8.0.x'
 
+- powershell: |
+    Invoke-WebRequest -Uri https://dot.net/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
+    ./dotnet-install.ps1 -Runtime aspnetcore -Channel 8.0 -InstallDir "C:\hostedtoolcache\windows\dotnet"
+  displayName: 'Install ASP.NET Core 8 Runtime'
+
 - task: NuGetAuthenticate@1
   displayName: 'Authenticate to Azure Artifacts'
 

@@ -58,7 +58,16 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: 'GiftOfTheGivers/GiftOfTheGivers.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/web'
+    zipAfterPublish: true
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish function app'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: 'GiftOfTheGivers.Functions/GiftOfTheGivers.Functions.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/functions'
     zipAfterPublish: true
 
 - task: AzureWebApp@1
@@ -67,4 +76,12 @@ steps:
     azureSubscription: 'GiftOfTheGiversAzure'
     appType: 'webApp'
     appName: 'giftofthegivers-zee'
-    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/web/*.zip'
+
+- task: AzureFunctionApp@2
+  displayName: 'Deploy to Azure Function App'
+  inputs:
+    connectedServiceNameARM: 'GiftOfTheGiversAzure'
+    appType: 'functionApp'
+    appName: 'giftofgivers-function'
+    package: '$(Build.ArtifactStagingDirectory)/functions/*.zip'

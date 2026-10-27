@@ -1,4 +1,7 @@
-﻿using GiftOfTheGivers.Helpers;
+﻿
+// unit tests for donation helper 
+
+using GiftOfTheGivers.Helpers;
 using Xunit;
 
 namespace GiftOfTheGivers.Tests

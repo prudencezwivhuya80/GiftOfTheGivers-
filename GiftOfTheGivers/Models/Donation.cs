@@ -21,6 +21,9 @@ namespace GiftOfTheGivers.Models
         public string Currency { get; set; } = "ZAR";
         public bool IsRecurring { get; set; }
         public DateTime DonationDate { get; set; } = DateTime.Now;
-       
+
+        public string? CertificateNumber { get; set; }
+
+
     }
 }

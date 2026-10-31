@@ -51,3 +51,44 @@ steps:
     command: 'test'
     projects: '**/*Tests.csproj'
     arguments: '--configuration $(buildConfiguration) --filter "Category!=UI"'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish web app'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: 'GiftOfTheGivers/GiftOfTheGivers.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/web'
+    zipAfterPublish: true
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish function app'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: 'GiftOfTheGivers.Functions/GiftOfTheGivers.Functions.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/functions'
+    zipAfterPublish: true
+
+- script: >
+    sqlcmd -S tcp:giftofthegivers-zee-server.database.windows.net,1433
+    -d GiftOfTheGiversDB
+    -U $(sqlUser) -P $(sqlPassword)
+    -i GiftOfTheGivers/migration.sql -b
+  displayName: 'Apply database migration script to Azure SQL'
+
+- task: AzureWebApp@1
+  displayName: 'Deploy to Azure App Service'
+  inputs:
+    azureSubscription: 'GiftOfTheGiversAzure'
+    appType: 'webApp'
+    appName: 'giftofthegivers-zee'
+    package: '$(Build.ArtifactStagingDirectory)/web/*.zip'
+
+- task: AzureFunctionApp@2
+  displayName: 'Deploy to Azure Function App'
+  inputs:
+    connectedServiceNameARM: 'GiftOfTheGiversAzure'
+    appType: 'functionApp'
+    appName: 'giftofgivers-function'
+    package: '$(Build.ArtifactStagingDirectory)/functions/*.zip'

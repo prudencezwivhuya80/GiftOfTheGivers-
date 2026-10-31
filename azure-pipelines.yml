@@ -70,6 +70,13 @@ steps:
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/functions'
     zipAfterPublish: true
 
+- script: >
+    sqlcmd -S tcp:giftofthegivers-zee-server.database.windows.net,1433
+    -d GiftOfTheGiversDB
+    -U $(sqlUser) -P $(sqlPassword)
+    -i GiftOfTheGivers/migration.sql -b
+  displayName: 'Apply database migration script to Azure SQL'
+
 - task: AzureWebApp@1
   displayName: 'Deploy to Azure App Service'
   inputs:
